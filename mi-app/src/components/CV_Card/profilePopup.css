@@ -1,0 +1,223 @@
+/* Fuente específica PARA EL POPUP */
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;700&display=swap');
+
+/* =========================================
+   POPUP – ESTILO CLONADO + AISLADO
+   ========================================= */
+
+/* 🔒 Mini-reset SOLO dentro del contenedor del popup */
+.pCard-container,
+.pCard-container * {
+  box-sizing: border-box;
+}
+
+/* Sobreescribimos lo que tu global hace con h1,h2,h3,p */
+.pCard-container h1,
+.pCard-container h2,
+.pCard-container h3,
+.pCard-container p,
+.pCard-container ul,
+.pCard-container li {
+  margin: 0;
+  padding: 0;
+  font-family: 'Montserrat', system-ui, -apple-system, BlinkMacSystemFont,
+    'Segoe UI', sans-serif;       /* NO Staatliches aquí */
+  text-align: left;               /* Quitamos el centrado global */
+}
+
+/* Párrafos del popup: color propio, NO rojo global */
+.pCard-container p {
+  color: #4b5361;
+}
+
+/* Imágenes dentro del popup: sin estilos raros globales */
+.pCard-container img {
+  max-width: 100%;
+  height: 100%;
+  display: block;
+  border-style: none;
+}
+
+/* Fondo oscuro detrás del popup */
+.pCard-backdrop {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.3);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 9999;
+}
+
+/* Contenedor principal de la tarjeta */
+.pCard-container {
+  position: relative;
+  width: min(1120px, 95vw);
+  height: min(620px, 90vh);
+  background: #e4e6ea;           /* gris de la imagen */
+  border-radius: 12px;
+  box-shadow: 0 18px 45px rgba(0, 0, 0, 0.25);
+  overflow: hidden;
+}
+
+/* Botón de cerrar (X) */
+.pCard-close {
+  position: absolute;
+  top: 26px;
+  right: 34px;
+  width: 28px;
+  height: 28px;
+  border-radius: 999px;
+  border: 1px solid rgba(0, 0, 0, 0.25);
+  background: transparent;
+  color: rgba(0, 0, 0, 0.6);
+  font-size: 18px;
+  line-height: 1;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Layout interno: foto + texto con márgenes como en el diseño */
+.pCard-grid {
+  display: grid;
+  grid-template-columns: 43% 57%;
+  height: 100%;
+  padding: 60px 80px;
+}
+
+/* =========================
+   COLUMNA IZQUIERDA: FOTO
+   ========================= */
+
+.pCard-imageBox {
+  width: 100%;
+  height: 100%;
+  background: #c3cbd5;  /* placeholder gris si aún no hay foto */
+  overflow: hidden;
+}
+
+.pCard-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* =========================
+   COLUMNA DERECHA: TEXTO
+   ========================= */
+
+.pCard-content {
+  display: flex;
+  flex-direction: column;
+  padding-left: 70px;
+  color: #3b4350;
+}
+
+/* Header: nombre a la izquierda, rol a la derecha */
+.pCard-header {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  margin-bottom: 40px;
+}
+
+/* Nombre grande en azul (sobreescribe h2 global) */
+.pCard-title {
+  font-size: 2.3rem;
+  font-weight: 700;
+  letter-spacing: 0.16em;
+  color: #255579;
+}
+
+/* Rol en gris claro, alineado a la derecha */
+.pCard-role {
+  margin-top: 4px;
+  font-size: 0.75rem;
+  letter-spacing: 0.24em;
+  text-transform: uppercase;
+  color: #a7adb8;
+  text-align: right;
+}
+
+/* Secciones tipo EDUCACIÓN, MIEMBRO */
+.pCard-section {
+  font-size: 0.9rem;
+  margin-bottom: 18px;
+}
+
+.pCard-sectionTitle {
+  font-size: 0.72rem;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: #b3bac6;
+  margin-bottom: 6px;
+}
+
+/* Listas dentro de las secciones */
+.pCard-list {
+  list-style: none;
+}
+
+.pCard-list li + li {
+  margin-top: 2px;
+}
+
+/* ===============================
+   BIO / TEXTO INFERIOR CON SCROLL
+   =============================== */
+
+.pCard-bio {
+  margin-top: 22px;
+  font-size: 0.9rem;
+  line-height: 1.55;
+  max-height: 260px;    /* altura antes de que salga el scroll */
+  overflow-y: auto;
+  padding-right: 10px;
+}
+
+/* Scrollbar solo dentro de la bio */
+.pCard-bio::-webkit-scrollbar {
+  width: 6px;
+}
+
+.pCard-bio::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.pCard-bio::-webkit-scrollbar-thumb {
+  background: rgba(0, 0, 0, 0.25);
+  border-radius: 999px;
+}
+
+/* ===============================
+   RESPONSIVE (solo para el popup)
+   =============================== */
+
+@media (max-width: 900px) {
+  .pCard-container {
+    width: 100vw;
+    height: 100vh;
+    border-radius: 0;
+  }
+
+  .pCard-grid {
+    grid-template-columns: 1fr;
+    grid-template-rows: 45% 55%;
+    padding: 24px 20px 32px;
+  }
+
+  .pCard-content {
+    padding-left: 0;
+    margin-top: 18px;
+  }
+
+  .pCard-title {
+    font-size: 1.8rem;
+  }
+
+  .pCard-bio {
+    max-height: 40vh;
+  }
+}

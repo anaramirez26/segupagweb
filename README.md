@@ -10,9 +10,9 @@
 
 | Capa | Tecnología | Ruta Raíz | Puerto Local |
 | :--- | :--- | :--- | :--- |
-| **Frontend (SPA)** | React 19, Vite 7, React Router DOM 7, CSS nativo | `EMarketProyecto/mi-app/` | `http://localhost:5173` |
-| **Backend (API REST)** | ASP.NET Core 8.0 Web API, EF Core 9 (SQL Server), JWT Bearer, Swagger | `EMarketProyecto/ApiWebMarket/ApiWebMarket/` | `http://localhost:5048` / `https://localhost:7044` |
-| **Base de Datos** | SQL Server (`MercaUcaContext` - Database First) | `EMarketProyecto/DB/` | SQL Server (según `appsettings.json`) |
+| **Frontend (SPA)** | React 19, Vite 7, React Router DOM 7, CSS nativo | `mi-app/` | `http://localhost:5173` |
+| **Backend (API REST)** | ASP.NET Core 8.0 Web API, EF Core 9 (SQL Server), JWT Bearer, Swagger | `ApiWebMarket/ApiWebMarket/` | `http://localhost:5048` / `https://localhost:7044` |
+| **Base de Datos** | SQL Server (`MercaUcaContext` - Database First) | `DB/` | SQL Server (según `appsettings.json`) |
 
 ---
 
@@ -116,7 +116,7 @@ Base URL local: `http://localhost:5048`
 
 ## 4. Rutas y Flujo del Frontend (`mi-app`)
 
-Definidas en `EMarketProyecto/mi-app/src/App.jsx`:
+Definidas en `mi-app/src/App.jsx`:
 
 - `/` → Redirige a `/Novedades`.
 - `/Novedades` → Renderiza `<Novedades />` (slider), `<PaginaNovedades />` (grid de productos) y `<Footer />`.
@@ -131,7 +131,7 @@ Definidas en `EMarketProyecto/mi-app/src/App.jsx`:
 
 ## 5. Modelo de Datos Principal (`MercaUcaContext`)
 
-Entidades principales en `EMarketProyecto/ApiWebMarket/ApiWebMarket/Models/`:
+Entidades principales en `ApiWebMarket/ApiWebMarket/Models/`:
 - **Usuarios y Seguridad:** `Usuario`, `Role`, `EstadoUsuario`, `Direccione`, `Pai`.
 - **Catálogo:** `Producto` (almacena imagen en `byte[] Foto`), `ProductoMedium` (flags de galería/novedades), `VariantesProducto` (talla, color, stock), `Categorium`, `CondicionProducto`, `Review`.
 - **Carrito y Órdenes:** `Carrito`, `ArticulosCarrito`, `Orden`, `ArticulosOrden`, `EstadosOrden`, `EstadoArticulosOrden`, `LineaEnvioDireccion`.
@@ -141,16 +141,16 @@ Entidades principales en `EMarketProyecto/ApiWebMarket/ApiWebMarket/Models/`:
 
 ## 6. Guía Rápida de Ejecución
 
-1. **Base de Datos:** Importar `EMarketProyecto/DB/MercaUca.bacpac` o ejecutar `BaseDeDAtos.sql` en SQL Server y ajustar la cadena `ConnectionStrings:MercaUcaContext` en `appsettings.json`.
+1. **Base de Datos:** Importar `DB/MercaUca.bacpac` o ejecutar `DB/BaseDeDAtos.sql` en SQL Server y ajustar la cadena `ConnectionStrings:MercaUcaContext` en `appsettings.json`.
 2. **Backend (.NET 8):**
    ```bash
-   cd EMarketProyecto/ApiWebMarket/ApiWebMarket
+   cd ApiWebMarket/ApiWebMarket
    dotnet run
    ```
    *(Para exponer con Ngrok: `ngrok http 5048`)*
 3. **Frontend (React + Vite):**
    ```bash
-   cd EMarketProyecto/mi-app
+   cd mi-app
    npm install
    npm run dev
    ```
